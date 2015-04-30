@@ -20,12 +20,14 @@ public class main_Screen extends javax.swing.JFrame {
     private add_edit_cust add_edit;
     private add_items addItem;
     private add_edit_staff add_staff;
+    private SQLClass sql;
 
     public main_Screen() {
       //  this.setUndecorated(true);
        // this.setResizable(true);
         initComponents();
         manegeInterface();
+        sql = new SQLClass("jdbc:oracle:thin:@155.238.39.111:1521:ictdb","oracle.jdbc.OracleDriver","E212073923","first");
         
 
     }
@@ -589,6 +591,15 @@ public class main_Screen extends javax.swing.JFrame {
 
     private void ManageCustomersbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageCustomersbtnActionPerformed
         // TODO add your handling code here:
+        
+        sql.execute("SELECT * FROM ITEM");
+        try{
+            //while(sql.rs.next()){
+                System.out.println(sql.rs.getString("ITEM_CODE")+"opopopo");
+            //}
+        }catch(Exception e){
+                            System.out.println(e);
+        }
         ManageUsersjPanel.setVisible(true);
        
        //turn off
