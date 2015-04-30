@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="type" type="java.awt.Window$Type" editor="org.netbeans.modules.form.editors.EnumEditor">
+      <Value id="POPUP"/>
+    </Property>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="addStaffsaveBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="171" max="32767" attributes="0"/>
+                      <Component id="addStaffCancel" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="staffnumlbl" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
+                              <Component id="staffNamelbl" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
+                              <Component id="staffSurnamelbl" max="32767" attributes="0"/>
+                              <Component id="staffUsernamelbl" alignment="0" pref="93" max="32767" attributes="0"/>
+                              <Component id="staffuserPasswordlbl" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="staffconfPasswordlbl" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="staffNametxt" alignment="0" max="32767" attributes="0"/>
+                          <Component id="staffSurnametxt" alignment="0" max="32767" attributes="0"/>
+                          <Component id="staffUsernametxt" alignment="0" max="32767" attributes="0"/>
+                          <Component id="staffuserPasswordtxt" alignment="0" max="32767" attributes="0"/>
+                          <Component id="staffuserPasswordtxt1" max="32767" attributes="0"/>
+                          <Component id="staffNumbertxt" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="staffnumlbl" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="staffNumbertxt" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="staffNamelbl" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="staffNametxt" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="staffSurnamelbl" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="staffSurnametxt" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="staffUsernamelbl" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="staffUsernametxt" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="staffuserPasswordlbl" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="staffuserPasswordtxt" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="staffconfPasswordlbl" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="staffuserPasswordtxt1" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="32" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="addStaffsaveBtn" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="addStaffCancel" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="staffnumlbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Staff Number: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="staffNumbertxt">
+    </Component>
+    <Component class="javax.swing.JLabel" name="staffNamelbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Staff Name: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="staffNametxt">
+    </Component>
+    <Component class="javax.swing.JLabel" name="staffSurnamelbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Staff Surname: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="staffSurnametxt">
+    </Component>
+    <Component class="javax.swing.JLabel" name="staffUsernamelbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Staff Username: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="staffUsernametxt">
+    </Component>
+    <Component class="javax.swing.JLabel" name="staffuserPasswordlbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="User Password: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="staffuserPasswordtxt">
+    </Component>
+    <Component class="javax.swing.JButton" name="addStaffsaveBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Save"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="addStaffCancel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancel"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addStaffCancelActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="staffconfPasswordlbl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Conferm Password: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="staffuserPasswordtxt1">
+    </Component>
+  </SubComponents>
+</Form>
