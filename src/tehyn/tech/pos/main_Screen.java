@@ -591,15 +591,6 @@ public class main_Screen extends javax.swing.JFrame {
 
     private void ManageCustomersbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageCustomersbtnActionPerformed
         // TODO add your handling code here:
-        
-        sql.execute("SELECT * FROM ITEM");
-        try{
-            //while(sql.rs.next()){
-                System.out.println(sql.rs.getString("ITEM_CODE")+"opopopo");
-            //}
-        }catch(Exception e){
-                            System.out.println(e);
-        }
         ManageUsersjPanel.setVisible(true);
        
        //turn off
@@ -628,6 +619,15 @@ public class main_Screen extends javax.swing.JFrame {
 
     private void ItemsbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemsbtnActionPerformed
         // TODO add your handling code here:
+        
+        try{
+            sql.executeQuery("SELECT * FROM ITEM");
+            while(sql.rs.next()){
+                System.out.println(sql.rs.getString("ITEM_CODE"));
+            }
+        }catch(Exception e){
+            System.out.println(e);
+        }
         itemPanel.setVisible(true);
         ManageUsersjPanel.setVisible(false);
         //turn off
