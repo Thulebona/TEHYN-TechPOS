@@ -60,6 +60,7 @@ public class main_Screen extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         makeSalesjPanel = new javax.swing.JPanel();
+        jComboBox1 = new javax.swing.JComboBox();
         ManageUsersjPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         CustjTable = new javax.swing.JTable();
@@ -177,15 +178,22 @@ public class main_Screen extends javax.swing.JFrame {
 
         jLayeredPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout makeSalesjPanelLayout = new javax.swing.GroupLayout(makeSalesjPanel);
         makeSalesjPanel.setLayout(makeSalesjPanelLayout);
         makeSalesjPanelLayout.setHorizontalGroup(
             makeSalesjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 667, Short.MAX_VALUE)
+            .addGroup(makeSalesjPanelLayout.createSequentialGroup()
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 566, Short.MAX_VALUE))
         );
         makeSalesjPanelLayout.setVerticalGroup(
             makeSalesjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 318, Short.MAX_VALUE)
+            .addGroup(makeSalesjPanelLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(259, Short.MAX_VALUE))
         );
 
         CustjTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -715,6 +723,7 @@ public class main_Screen extends javax.swing.JFrame {
     private javax.swing.JPanel itemPanel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton5;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
