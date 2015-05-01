@@ -7,6 +7,7 @@ package tehyn.tech.pos;
 
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,6 +22,7 @@ public class main_Screen extends javax.swing.JFrame {
     private add_items addItem;
     private add_edit_staff add_staff;
     private SQLClass sql;
+    private DefaultTableModel model;
 
     public main_Screen() {
       //  this.setUndecorated(true);
@@ -61,8 +63,12 @@ public class main_Screen extends javax.swing.JFrame {
         makeSalesBtn = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        makeSalesjPanel = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox();
+        usersjPanel = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        staffjTable = new javax.swing.JTable();
+        addStaffBtn = new javax.swing.JButton();
+        edditStaff = new javax.swing.JButton();
+        deletestaffBtn = new javax.swing.JButton();
         ManageUsersjPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         CustjTable = new javax.swing.JTable();
@@ -76,6 +82,7 @@ public class main_Screen extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
         detailsjPanel = new javax.swing.JPanel();
         pricelbl = new javax.swing.JLabel();
         priceTxt = new javax.swing.JTextField();
@@ -84,12 +91,8 @@ public class main_Screen extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         addItemBtn = new javax.swing.JButton();
-        usersjPanel = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        staffjTable = new javax.swing.JTable();
-        addStaffBtn = new javax.swing.JButton();
-        edditStaff = new javax.swing.JButton();
-        deletestaffBtn = new javax.swing.JButton();
+        makeSalesjPanel = new javax.swing.JPanel();
+        jComboBox1 = new javax.swing.JComboBox();
         firstjPanel = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -109,7 +112,7 @@ public class main_Screen extends javax.swing.JFrame {
         HeaderjPanel.setLayout(HeaderjPanelLayout);
         HeaderjPanelLayout.setHorizontalGroup(
             HeaderjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 819, Short.MAX_VALUE)
+            .addGap(0, 948, Short.MAX_VALUE)
         );
         HeaderjPanelLayout.setVerticalGroup(
             HeaderjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,59 +169,80 @@ public class main_Screen extends javax.swing.JFrame {
         NavigationjPanelLayout.setVerticalGroup(
             NavigationjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NavigationjPanelLayout.createSequentialGroup()
-                .addComponent(ManageCustomersbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                .addComponent(ManageCustomersbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Itemsbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                .addComponent(Itemsbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(manegeStaffBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                .addComponent(manegeStaffBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(makeSalesBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                .addComponent(makeSalesBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
                 .addGap(4, 4, 4))
         );
 
         jLayeredPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        staffjTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        javax.swing.GroupLayout makeSalesjPanelLayout = new javax.swing.GroupLayout(makeSalesjPanel);
-        makeSalesjPanel.setLayout(makeSalesjPanelLayout);
-        makeSalesjPanelLayout.setHorizontalGroup(
-            makeSalesjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(makeSalesjPanelLayout.createSequentialGroup()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 566, Short.MAX_VALUE))
+            },
+            new String [] {
+                "Staff number", "Staff name", "Staff surname", "Staff Username", "password"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(staffjTable);
+
+        addStaffBtn.setText("Add Staff");
+        addStaffBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addStaffBtnActionPerformed(evt);
+            }
+        });
+
+        edditStaff.setText("Edit Staff");
+        edditStaff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edditStaffActionPerformed(evt);
+            }
+        });
+
+        deletestaffBtn.setText("Delete Staff");
+
+        javax.swing.GroupLayout usersjPanelLayout = new javax.swing.GroupLayout(usersjPanel);
+        usersjPanel.setLayout(usersjPanelLayout);
+        usersjPanelLayout.setHorizontalGroup(
+            usersjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usersjPanelLayout.createSequentialGroup()
+                .addComponent(addStaffBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                .addGap(145, 145, 145)
+                .addComponent(edditStaff, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                .addGap(126, 126, 126)
+                .addComponent(deletestaffBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
+            .addComponent(jScrollPane4)
         );
-        makeSalesjPanelLayout.setVerticalGroup(
-            makeSalesjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(makeSalesjPanelLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(259, Short.MAX_VALUE))
+        usersjPanelLayout.setVerticalGroup(
+            usersjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usersjPanelLayout.createSequentialGroup()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(usersjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addStaffBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(edditStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deletestaffBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         CustjTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Customer number", "Customer name", "Customer surname", "Customer phone number", "Customer address", "Customer ID/Passport number"
@@ -252,6 +276,11 @@ public class main_Screen extends javax.swing.JFrame {
         });
 
         deleteCustBtn.setText("Delete Customer");
+        deleteCustBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteCustBtnActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -262,11 +291,11 @@ public class main_Screen extends javax.swing.JFrame {
         ManageUsersjPanelLayout.setHorizontalGroup(
             ManageUsersjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ManageUsersjPanelLayout.createSequentialGroup()
-                .addComponent(addCustBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                .addComponent(addCustBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
                 .addGap(145, 145, 145)
-                .addComponent(editCustBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                .addComponent(editCustBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
                 .addGap(126, 126, 126)
-                .addComponent(deleteCustBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
+                .addComponent(deleteCustBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
             .addComponent(jScrollPane1)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -275,7 +304,7 @@ public class main_Screen extends javax.swing.JFrame {
             .addGroup(ManageUsersjPanelLayout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ManageUsersjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addCustBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -285,15 +314,17 @@ public class main_Screen extends javax.swing.JFrame {
         );
 
         itemDeleteBtn.setText("Delete");
+        itemDeleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemDeleteBtnActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Item code", "Item Name", "item Quantity", "Stack Date"
@@ -307,18 +338,37 @@ public class main_Screen extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(java.awt.SystemColor.textHighlight);
+        jLabel3.setText("Click a row to see Item  price and Discription");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(103, 103, 103)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(127, 127, 127))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE))
         );
+
+        jLabel3.getAccessibleContext().setAccessibleName("msgLbn");
 
         detailsjPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -415,79 +465,22 @@ public class main_Screen extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        staffjTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Staff number", "Staff name", "Staff surname", "Staff Username", "password"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane4.setViewportView(staffjTable);
-
-        addStaffBtn.setText("Add Staff");
-        addStaffBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addStaffBtnActionPerformed(evt);
-            }
-        });
-
-        edditStaff.setText("Edit Staff");
-        edditStaff.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edditStaffActionPerformed(evt);
-            }
-        });
-
-        deletestaffBtn.setText("Delete Staff");
-
-        javax.swing.GroupLayout usersjPanelLayout = new javax.swing.GroupLayout(usersjPanel);
-        usersjPanel.setLayout(usersjPanelLayout);
-        usersjPanelLayout.setHorizontalGroup(
-            usersjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(usersjPanelLayout.createSequentialGroup()
-                .addComponent(addStaffBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                .addGap(145, 145, 145)
-                .addComponent(edditStaff, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                .addGap(126, 126, 126)
-                .addComponent(deletestaffBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
-            .addComponent(jScrollPane4)
+        javax.swing.GroupLayout makeSalesjPanelLayout = new javax.swing.GroupLayout(makeSalesjPanel);
+        makeSalesjPanel.setLayout(makeSalesjPanelLayout);
+        makeSalesjPanelLayout.setHorizontalGroup(
+            makeSalesjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(makeSalesjPanelLayout.createSequentialGroup()
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 566, Short.MAX_VALUE))
         );
-        usersjPanelLayout.setVerticalGroup(
-            usersjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(usersjPanelLayout.createSequentialGroup()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(usersjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addStaffBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(edditStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deletestaffBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        makeSalesjPanelLayout.setVerticalGroup(
+            makeSalesjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(makeSalesjPanelLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(259, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout firstjPanelLayout = new javax.swing.GroupLayout(firstjPanel);
@@ -527,10 +520,10 @@ public class main_Screen extends javax.swing.JFrame {
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(makeSalesjPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jLayeredPane1.setLayer(makeSalesjPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(usersjPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(ManageUsersjPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(itemPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(usersjPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(makeSalesjPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(firstjPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jMenu1.setText("File");
@@ -591,16 +584,29 @@ public class main_Screen extends javax.swing.JFrame {
 
     private void ManageCustomersbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageCustomersbtnActionPerformed
         // TODO add your handling code here:
+        model = (DefaultTableModel) CustjTable.getModel();
+        model.setRowCount(0);
+        try{
+            sql.executeQuery("SELECT CUSTOMER_NO,FIRST_NAME,LAST_NAME,PHONE_NO,ADDRESS,CUSTOMER_ID_NO FROM CUSTOMER");
+            while(sql.rs.next()){
+                model.addRow(new Object[]{sql.rs.getString("CUSTOMER_NO"),
+                    sql.rs.getString("FIRST_NAME"),
+                    sql.rs.getString("LAST_NAME"),
+                    sql.rs.getString("PHONE_NO"),
+                    sql.rs.getString("ADDRESS"),
+                    sql.rs.getString("CUSTOMER_ID_NO")
+                });
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e,"Error",JOptionPane.ERROR_MESSAGE);
+        }
         ManageUsersjPanel.setVisible(true);
        
        //turn off
         usersjPanel.setVisible(false);
         itemPanel.setVisible(false);
         makeSalesjPanel.setVisible(false);
-        
         //connection
-        
-
     }//GEN-LAST:event_ManageCustomersbtnActionPerformed
 
     private void editCustBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editCustBtnActionPerformed
@@ -613,20 +619,32 @@ public class main_Screen extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         if (JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(null, "Are you sure you wanna \nexit the application", "Log Out", JOptionPane.YES_NO_OPTION)) {
+            try{
+            sql.conn.close();
+            }catch(Exception e){
+               JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            }
             System.exit(0);
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void ItemsbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemsbtnActionPerformed
         // TODO add your handling code here:
-        
+        priceTxt.setText("");
+        jTextArea1.setText("");
+        model = (DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0);
         try{
-            sql.executeQuery("SELECT * FROM ITEM");
+            sql.executeQuery("SELECT ITEM_CODE,ITEM_NAME,QUINTITY,STOCKED_DATE FROM ITEM");
             while(sql.rs.next()){
-                System.out.println(sql.rs.getString("ITEM_CODE"));
+                model.addRow(new Object[]{sql.rs.getString("ITEM_CODE"),
+                    sql.rs.getString("ITEM_NAME"),
+                    sql.rs.getString("QUINTITY"),
+                    sql.rs.getString("STOCKED_DATE"),
+                });
             }
         }catch(Exception e){
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, e,"Error",JOptionPane.ERROR_MESSAGE);
         }
         itemPanel.setVisible(true);
         ManageUsersjPanel.setVisible(false);
@@ -634,22 +652,19 @@ public class main_Screen extends javax.swing.JFrame {
         usersjPanel.setVisible(false);
         ManageUsersjPanel.setVisible(false);
         makeSalesjPanel.setVisible(false);
-
     }//GEN-LAST:event_ItemsbtnActionPerformed
 
     private void addItemBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addItemBtnActionPerformed
         // TODO add your handling code here:
         addItem.setLocation(450, 200);
         addItem.setVisible(true);
-        
     }//GEN-LAST:event_addItemBtnActionPerformed
 
     private void addStaffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStaffBtnActionPerformed
         // TODO add your handling code here:
         add_staff.setTitle("Add Staff");
         add_staff.setLocation(450, 200);
-        add_staff.setVisible(true);
-        
+        add_staff.setVisible(true);  
     }//GEN-LAST:event_addStaffBtnActionPerformed
 
     private void edditStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edditStaffActionPerformed
@@ -662,10 +677,27 @@ public class main_Screen extends javax.swing.JFrame {
 
     private void manegeStaffBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manegeStaffBtnActionPerformed
         // TODO add your handling code here:
+        model = (DefaultTableModel) staffjTable.getModel();
+        model.setRowCount(0);
+        try{
+            sql.executeQuery("SELECT STAFF_NO,FIRST_NAME,LAST_NAME,PASSWORD FROM VENDOR");
+            while(sql.rs.next()){
+                model.addRow(new Object[]{sql.rs.getString("STAFF_NO"),
+                    sql.rs.getString("FIRST_NAME"),
+                    sql.rs.getString("LAST_NAME"),
+                    "Not yet assigned",
+                    sql.rs.getString("PASSWORD")
+                });
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e,"Error",JOptionPane.ERROR_MESSAGE);
+        }
         usersjPanel.setVisible(true);
         ManageUsersjPanel.setVisible(false);
         itemPanel.setVisible(false);
         makeSalesjPanel.setVisible(false);
+        
+        
 
     }//GEN-LAST:event_manegeStaffBtnActionPerformed
 
@@ -676,6 +708,50 @@ public class main_Screen extends javax.swing.JFrame {
         itemPanel.setVisible(false);
         makeSalesjPanel.setVisible(true);
     }//GEN-LAST:event_makeSalesBtnActionPerformed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        // TODO add your handling code here:
+        if(jTable2.getSelectedRow() != -1){
+        sql.executeQuery("SELECT SELL_PRICE,DESCRIPTION FROM ITEM WHERE ITEM_CODE = "
+                +model.getValueAt( jTable2.getSelectedRow(),0));
+        try{
+            sql.rs.next();
+            priceTxt.setText("R"+sql.rs.getString("SELL_PRICE"));
+            jTextArea1.setText(sql.rs.getString("DESCRIPTION"));
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }}
+    }//GEN-LAST:event_jTable2MouseClicked
+
+    private void itemDeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDeleteBtnActionPerformed
+        // TODO add your handling code here:
+
+        if (jTable2.getSelectedRow() != -1) {
+            if (JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(null, "Are you sure you wanna \nDelete this Item", "Log Out", JOptionPane.YES_NO_OPTION)) {
+
+                sql.executeQuery("DELETE FROM ITEM WHERE ITEM_CODE = "
+                        + model.getValueAt(jTable2.getSelectedRow(), 0));
+                model.removeRow(jTable2.getSelectedRow());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No Item select", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        jTable2.clearSelection();
+    }//GEN-LAST:event_itemDeleteBtnActionPerformed
+
+    private void deleteCustBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCustBtnActionPerformed
+        // TODO add your handling code here:
+        if (CustjTable.getSelectedRow() != -1) {
+            if (JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(null, "Are you sure you wanna \nDelete this Item", "Log Out", JOptionPane.YES_NO_OPTION)) {
+                sql.executeQuery("DELETE FROM CUSTOMER WHERE CUSTOMER_NO = "
+                        + model.getValueAt(CustjTable.getSelectedRow(), 0));
+                model.removeRow(CustjTable.getSelectedRow());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No Item select", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        CustjTable.clearSelection();
+    }//GEN-LAST:event_deleteCustBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -737,6 +813,7 @@ public class main_Screen extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JMenu jMenu1;
